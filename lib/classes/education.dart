@@ -48,7 +48,7 @@ class Education {
       eduLevel: data['Accreditation']['EducationLevel'] ?? 'Not Sepcified',
       // certificate: data['Accreditation']['Education'] ?? 'Not Sepcified',
       location: Location.fromJson(json, where: 'Education'),
-      grade: Grade.fromJson(json),
+      grade: Grade.fromJson(json, index),
     );
   }
 }

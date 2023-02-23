@@ -55,8 +55,9 @@ class Candidate {
         emails.add(Email.fromJson(json, i));
       }
     }
-    if (data['PhoneNumber'].length > 0) {
-      for (int i = 0; i < data['PhoneNumbers'].length; i++) {
+    List<dynamic> phones = data['PhoneNumbers'];
+    if (phones.isNotEmpty) {
+      for (int i = 0; i < phones.length; i++) {
         phoneNums.add(PhoneNumber.fromJson(json, i));
       }
     }

@@ -22,11 +22,17 @@ class Location {
   }
   factory Location.fromJson(dynamic json,
       {required String where, int index = 0}) {
-    dynamic data = json['Value']['Data'][where]['Location'];
-    return Location(
-      country: data['Country'],
-      code: data['PostalCode'],
-      city: data['City'],
-    );
+    dynamic data = json['Value']['Data'][where][index]['Location'];
+    Location location = data == null
+        ? Location(
+            city: 'Not Specified',
+            code: 'Not Specified',
+            country: 'Not Specified')
+        : Location(
+            country: data['Country'] ?? 'Not Specified',
+            code: data['PostalCode'] ?? 'Not Specified',
+            city: data['City'] ?? 'Not Specified',
+          );
+    return location;
   }
 }

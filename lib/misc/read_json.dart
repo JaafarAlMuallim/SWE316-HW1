@@ -10,7 +10,6 @@ class Reader {
       String response =
           await rootBundle.loadString('assets/CV_Sample_0$i.json');
       dynamic data = await json.decode(response);
-
       Resume resume = Resume.fromJson(data);
       resumes.add(resume);
     }

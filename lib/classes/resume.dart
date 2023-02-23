@@ -44,7 +44,7 @@ class Resume {
 
   factory Resume.fromJson(dynamic json) {
     dynamic data = json['Value']['Data'];
-    Candidate candidate = Candidate.fromJson(data);
+    Candidate candidate = Candidate.fromJson(json);
     Experience exp = Experience.fromJson(json);
     List<dynamic> skillsData = json['Value']['Data']['Skills'];
     List<Skill> skillList = [];
@@ -57,14 +57,14 @@ class Resume {
     List<dynamic> certifcations = data['Certifications'];
     List<String> certifs = [];
     if (certifcations.isNotEmpty) {
-      for (int i = 0; i < certifs.length; i++) {
-        certifs.add(certifcations[i]);
+      for (int i = 0; i < certifcations.length; i++) {
+        certifs.add(certifcations[0]);
       }
     }
     List<dynamic> edus = data['Education'];
     List<Education> edu = [];
     if (edus.isNotEmpty) {
-      for (int i = 0; i < data['Education'].legnth; i++) {
+      for (int i = 0; i < edus.length; i++) {
         edu.add(Education.fromJson(json, i));
       }
     }
@@ -76,19 +76,3 @@ class Resume {
         certifs: certifs);
   }
 }
-  // dynamic data = json['Value']['Data'];
-  // List<dynamic> certifcations = data['Certifications'];
-  //   List<String> certifs = [];
-  // for (int i = 0; i < certifs.length; i++) {
-  //   certifs.add(certifcations[i]);
-  // }
-  // dynamic skillsData = json['Value']['Data']['Skills'] as List;
-  // List<Skill> skillList = [];
-  // List<Job> jobsList = [];
-  // if (skillsData.length > 0) {
-  //   for (int i = 0; i < skillsData.length; i++) {
-  //     Skill skill = Skill.fromJson(json, i);
-  //     skillList.add(skill);
-  //   }
-  // }
-

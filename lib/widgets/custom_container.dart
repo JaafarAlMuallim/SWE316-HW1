@@ -22,6 +22,7 @@ class CustomContainer extends StatelessWidget {
                 '${Reader.resumes[1].candidate.fName} ${Reader.resumes[1].candidate.lName}'),
             Text(
                 '${Reader.resumes[2].candidate.fName} ${Reader.resumes[2].candidate.lName}'),
+            Text('${Reader.resumes[1].certifs[0]}'),
           ],
         ));
   }
