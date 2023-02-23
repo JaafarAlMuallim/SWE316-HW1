@@ -1,22 +1,24 @@
 import 'package:swe_homework/classes/candidate.dart';
+import 'package:swe_homework/classes/certifications.dart';
 import 'package:swe_homework/classes/education.dart';
 import 'package:swe_homework/classes/experience.dart';
 import 'package:swe_homework/classes/skill.dart';
 
 class Resume {
   Candidate? _candidate;
-  Experience? _exp;
+  Experience? _experience;
+
   List<Education>? _edu;
   List<Skill>? _skills;
-  List<String>? _certifs;
+  List<Certification>? _certifs;
 
   get candidate => _candidate;
 
   set candidate(value) => _candidate = value;
 
-  get exp => _exp;
+  get experience => _experience;
 
-  set exp(value) => _exp = value;
+  set experience(value) => _experience = value;
 
   get edu => _edu;
 
@@ -35,9 +37,9 @@ class Resume {
       required Experience exp,
       required List<Education> edu,
       required List<Skill> skill,
-      required List<String> certifs})
+      required List<Certification> certifs})
       : _candidate = candidate,
-        _exp = exp,
+        _experience = exp,
         _edu = edu,
         _skills = skill,
         _certifs = certifs;
@@ -55,10 +57,10 @@ class Resume {
       }
     }
     List<dynamic> certifcations = data['Certifications'];
-    List<String> certifs = [];
+    List<Certification> certifs = [];
     if (certifcations.isNotEmpty) {
       for (int i = 0; i < certifcations.length; i++) {
-        certifs.add(certifcations[0]);
+        certifs.add(Certification.fromJson(json, i));
       }
     }
     List<dynamic> edus = data['Education'];

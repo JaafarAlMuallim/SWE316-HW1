@@ -20,7 +20,7 @@ const kBackgroundBlurred = Color(0XFF1C1D22);
 const kResetColor = Color(0XFFDF696A);
 const kResetBackground = Color.fromRGBO(223, 105, 106, 0.3);
 const TextStyle kTextStyle = TextStyle(
-  color: kTextColor,
+  color: Colors.black,
   fontWeight: FontWeight.w700,
   // fontFamily: GoogleFonts.almarai().fontFamily,
 );

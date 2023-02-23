@@ -2,28 +2,23 @@ import 'package:swe_homework/classes/email.dart';
 import 'package:swe_homework/classes/phone_number.dart';
 
 class Candidate {
-  String? _fName;
-  String? _lName;
+  String? _name;
   List<PhoneNumber>? _phoneNums;
   List<Email>? _emails;
   String? _bdate;
   List<String>? _langs;
 
-  get fName => _fName;
+  get name => _name;
 
-  set fName(value) => _fName = value;
-
-  get lName => _lName;
-
-  set lName(value) => _lName = value;
+  set name(value) => _name = value;
 
   get phoneNum => _phoneNums;
 
   set phoneNum(value) => _phoneNums = value;
 
-  get email => _emails;
+  get emails => _emails;
 
-  set email(value) => _emails = value;
+  set emails(value) => _emails = value;
 
   get bdate => _bdate;
 
@@ -34,14 +29,12 @@ class Candidate {
   set langs(value) => _langs = value;
 
   Candidate({
-    required String fName,
-    required String lName,
+    required String name,
     required String bdate,
     required List<Email> emails,
     required List<PhoneNumber> phoneNums,
     List<String>? langs,
-  })  : _fName = fName,
-        _lName = lName,
+  })  : _name = name,
         _bdate = bdate,
         _emails = emails,
         _phoneNums = phoneNums,
@@ -62,16 +55,10 @@ class Candidate {
       }
     }
     return Candidate(
-      fName: data['Name']['First'] ?? 'Not Sepcified',
-      lName: data['Name']['Last'] ?? 'Not Sepcified',
+      name: data['Name']['Raw'] ?? 'Not Sepcified',
       bdate: data['DateOfBirth'] ?? 'Not Sepcified',
       emails: emails,
       phoneNums: phoneNums,
     );
-  }
-
-  @override
-  String toString() {
-    return '$_fName $_lName $_phoneNums $_bdate $_emails';
   }
 }
