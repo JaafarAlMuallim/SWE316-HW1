@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:swe_homework/classes/resume.dart';
 import 'package:swe_homework/misc/read_json.dart';
 import 'package:swe_homework/myapp.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Reader.read();
-  runApp(const MyApp());
+  List<Resume> resumes = await Reader.read();
+  runApp(MyApp(
+    resumes: resumes,
+  ));
 }

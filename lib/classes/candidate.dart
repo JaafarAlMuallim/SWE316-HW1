@@ -1,13 +1,13 @@
-import 'package:swe_homework/classes/experience.dart';
+import 'package:swe_homework/classes/email.dart';
+import 'package:swe_homework/classes/phone_number.dart';
 
 class Candidate {
   String? _fName;
   String? _lName;
-  String? _phoneNum;
-  String? _email;
-  DateTime? _bdate;
+  List<PhoneNumber>? _phoneNums;
+  List<Email>? _emails;
+  String? _bdate;
   List<String>? _langs;
-  final Experience? exper;
 
   get fName => _fName;
 
@@ -17,13 +17,13 @@ class Candidate {
 
   set lName(value) => _lName = value;
 
-  get phoneNum => _phoneNum;
+  get phoneNum => _phoneNums;
 
-  set phoneNum(value) => _phoneNum = value;
+  set phoneNum(value) => _phoneNums = value;
 
-  get email => _email;
+  get email => _emails;
 
-  set email(value) => _email = value;
+  set email(value) => _emails = value;
 
   get bdate => _bdate;
 
@@ -33,34 +33,44 @@ class Candidate {
 
   set langs(value) => _langs = value;
 
-  Candidate(
-    this.exper, {
+  Candidate({
     required String fName,
     required String lName,
-    required String phoneNum,
-    required String email,
-    DateTime? bdate,
+    required String bdate,
+    required List<Email> emails,
+    required List<PhoneNumber> phoneNums,
     List<String>? langs,
   })  : _fName = fName,
         _lName = lName,
-        _phoneNum = phoneNum,
-        _email = email,
         _bdate = bdate,
+        _emails = emails,
+        _phoneNums = phoneNums,
         _langs = langs;
-
   factory Candidate.fromJson(dynamic json) {
     dynamic data = json['Value']['Data'];
+    List<Email> emails = [];
+    List<PhoneNumber> phoneNums = [];
+    if (data['Emails'].length > 0) {
+      for (int i = 0; i < data['Emails'].length; i++) {
+        emails.add(Email.fromJson(json, i));
+      }
+    }
+    if (data['PhoneNumber'].length > 0) {
+      for (int i = 0; i < data['PhoneNumbers'].length; i++) {
+        phoneNums.add(PhoneNumber.fromJson(json, i));
+      }
+    }
     return Candidate(
-      Experience.fromJson(json),
-      fName: data['Name']['First'],
-      lName: data['Name']['Last'],
-      phoneNum: data['PhoneNumbers'][0],
-      email: data['Emails'][0],
+      fName: data['Name']['First'] ?? 'Not Sepcified',
+      lName: data['Name']['Last'] ?? 'Not Sepcified',
+      bdate: data['DateOfBirth'] ?? 'Not Sepcified',
+      emails: emails,
+      phoneNums: phoneNums,
     );
   }
 
   @override
   String toString() {
-    return '$_fName $_lName $_phoneNum $_email $exper';
+    return '$_fName $_lName $_phoneNums $_bdate $_emails';
   }
 }

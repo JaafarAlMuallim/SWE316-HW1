@@ -22,8 +22,10 @@ class Skill {
   factory Skill.fromJson(dynamic json, int index) {
     dynamic data = json['Value']['Data']['Skills'];
     return Skill(
-        name: data[index]['Name'],
-        type: data[index]['Type'],
-        section: data[index]['Sources'][0]['Section'].split('/'));
+      name: data[index]['Name'] ?? 'Not Sepcified',
+      type: data[index]['Type'] ?? 'Not Sepcified',
+      section:
+          data[index]['Sources'][0]['Section'].split('/') ?? 'Not Sepcified',
+    );
   }
 }

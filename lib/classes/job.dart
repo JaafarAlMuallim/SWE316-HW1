@@ -1,6 +1,8 @@
+import 'package:swe_homework/classes/location.dart';
+
 class Job {
   String? _jobTitle;
-  String? _location;
+  Location? _location;
   DateTime? _start;
   DateTime? _end;
   int? _occupationTime;
@@ -9,7 +11,7 @@ class Job {
   Job(
       {required String jobTitle,
       required int occupaitonTime,
-      required String location,
+      required Location location,
       DateTime? start,
       DateTime? end,
       String? classTitle})
@@ -47,8 +49,9 @@ class Job {
   factory Job.fromJson(dynamic json, int index) {
     dynamic data = json['Value']['Data']['WorkExperience'];
     return Job(
-        jobTitle: data[index]['JobTitle'],
-        occupaitonTime: data[index]['Dates']['MonthsInPosition'],
-        location: data[index]['Location']['Formatted']);
+      jobTitle: data[index]['JobTitle'] ?? 'Not Sepcified',
+      occupaitonTime: data[index]['Dates']['MonthsInPosition'] ?? 0,
+      location: Location.fromJson(json, where: 'WorkExperience', index: index),
+    );
   }
 }

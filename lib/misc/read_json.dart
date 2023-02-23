@@ -1,16 +1,19 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:swe_homework/classes/candidate.dart';
+import 'package:swe_homework/classes/resume.dart';
 
 class Reader {
-  static Future<List<Candidate>> read() async {
-    List<Candidate> lst = [];
-    String response = await rootBundle.loadString('assets/CV_Sample_01.json');
-    dynamic data = await json.decode(response);
-    Candidate candidate = Candidate.fromJson(data);
-    print(candidate.toString());
+  static List<Resume> resumes = [];
+  static Future<List<Resume>> read() async {
+    for (int i = 1; i < 4; i++) {
+      String response =
+          await rootBundle.loadString('assets/CV_Sample_0$i.json');
+      dynamic data = await json.decode(response);
 
-    return lst;
+      Resume resume = Resume.fromJson(data);
+      resumes.add(resume);
+    }
+    return resumes;
   }
 }
