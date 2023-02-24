@@ -17,7 +17,7 @@ class Grade {
   factory Grade.fromJson(dynamic json, int index) {
     dynamic data = json['Value']['Data']['Education'][index]['Grade'];
     Grade grade = data == null
-        ? Grade(metric: 'Not Specified', value: 'Not Specified')
+        ? Grade(metric: 'XXXX', value: 'XXXX')
         : Grade(metric: data['Metric'], value: data['Value']);
     return grade;
   }

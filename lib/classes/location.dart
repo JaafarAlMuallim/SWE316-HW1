@@ -24,14 +24,11 @@ class Location {
       {required String where, int index = 0}) {
     dynamic data = json['Value']['Data'][where][index]['Location'];
     Location location = data == null
-        ? Location(
-            city: 'Not Specified',
-            code: 'Not Specified',
-            country: 'Not Specified')
+        ? Location(city: 'XXXX', code: 'XXXX', country: 'XXXX')
         : Location(
-            country: data['Country'] ?? 'Not Specified',
-            code: data['PostalCode'] ?? 'Not Specified',
-            city: data['City'] ?? 'Not Specified',
+            country: data['Country'] ?? 'XXXX',
+            code: data['PostalCode'] ?? 'XXXX',
+            city: data['City'] ?? 'XXXX',
           );
     return location;
   }

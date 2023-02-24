@@ -7,8 +7,7 @@ import 'package:swe_homework/classes/skill.dart';
 class Resume {
   Candidate? _candidate;
   Experience? _experience;
-
-  List<Education>? _edu;
+  List<Education>? _education;
   List<Skill>? _skills;
   List<Certification>? _certifs;
 
@@ -20,9 +19,9 @@ class Resume {
 
   set experience(value) => _experience = value;
 
-  get edu => _edu;
+  get education => _education;
 
-  set edu(value) => _edu = value;
+  set education(value) => _education = value;
 
   get skills => _skills;
 
@@ -34,13 +33,13 @@ class Resume {
 
   Resume(
       {required Candidate candidate,
-      required Experience exp,
-      required List<Education> edu,
+      required Experience experience,
+      required List<Education> education,
       required List<Skill> skill,
       required List<Certification> certifs})
       : _candidate = candidate,
-        _experience = exp,
-        _edu = edu,
+        _experience = experience,
+        _education = education,
         _skills = skill,
         _certifs = certifs;
 
@@ -72,8 +71,8 @@ class Resume {
     }
     return Resume(
         candidate: candidate,
-        exp: exp,
-        edu: edu,
+        experience: exp,
+        education: edu,
         skill: skillList,
         certifs: certifs);
   }

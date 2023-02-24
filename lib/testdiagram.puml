@@ -1,0 +1,200 @@
+@startuml ClassDiagram
+set namespaceSeparator ::
+
+class "swe_homework::misc::read_json.dart::Reader" {
+  {static} +List<Resume> resumes
+  {static} +Future<List<Resume>> read()
+}
+
+class "swe_homework::myapp.dart::MyApp" {
+  +List<Resume> resumes
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::myapp.dart::MyApp"
+
+class "swe_homework::classes::email.dart::Email" {
+  -String? _email
+  +dynamic email
+}
+
+class "swe_homework::classes::skill.dart::Skill" {
+  -String? _name
+  -String? _type
+  -List<String>? _section
+  +dynamic name
+  +dynamic type
+  +dynamic section
+}
+
+class "swe_homework::classes::resume.dart::Resume" {
+  -Candidate? _candidate
+  -Experience? _experience
+  -List<Education>? _edu
+  -List<Skill>? _skills
+  -List<Certification>? _certifs
+  +dynamic candidate
+  +dynamic experience
+  +dynamic edu
+  +dynamic skills
+  +dynamic certifs
+}
+
+"swe_homework::classes::resume.dart::Resume" o-- "swe_homework::classes::candidate.dart::Candidate"
+"swe_homework::classes::resume.dart::Resume" o-- "swe_homework::classes::experience.dart::Experience"
+
+class "swe_homework::classes::job.dart::Job" {
+  -String? _jobTitle
+  -Location? _location
+  -Date? _date
+  -String? _classTitle
+  +dynamic jobTitle
+  +dynamic location
+  +dynamic date
+  +dynamic classTitle
+}
+
+"swe_homework::classes::job.dart::Job" o-- "swe_homework::classes::location.dart::Location"
+"swe_homework::classes::job.dart::Job" o-- "swe_homework::classes::dates.dart::Date"
+
+class "swe_homework::classes::education.dart::Education" {
+  -String? _org
+  -String? _eduLevel
+  -Grade? _grade
+  -Location? _location
+  +dynamic org
+  +dynamic eduLevel
+  +dynamic grade
+  +dynamic location
+}
+
+"swe_homework::classes::education.dart::Education" o-- "swe_homework::classes::grade.dart::Grade"
+"swe_homework::classes::education.dart::Education" o-- "swe_homework::classes::location.dart::Location"
+
+class "swe_homework::classes::location.dart::Location" {
+  -String? _country
+  -String? _postalCode
+  -String? _city
+  +dynamic country
+  +dynamic postalCode
+  +dynamic city
+}
+
+class "swe_homework::classes::candidate.dart::Candidate" {
+  -String? _name
+  -List<PhoneNumber>? _phoneNums
+  -List<Email>? _emails
+  -String? _bdate
+  -List<String>? _langs
+  +dynamic name
+  +dynamic phoneNum
+  +dynamic emails
+  +dynamic bdate
+  +dynamic langs
+}
+
+class "swe_homework::classes::experience.dart::Experience" {
+  -int? _expYears
+  -String? _profession
+  -List<Job>? _jobs
+  +dynamic expYears
+  +dynamic profession
+  +dynamic jobs
+}
+
+class "swe_homework::classes::dates.dart::Date" {
+  -String? _start
+  -String? _end
+  -int? _occupationTime
+  +dynamic start
+  +dynamic end
+  +dynamic occupationTime
+}
+
+class "swe_homework::classes::phone_number.dart::PhoneNumber" {
+  -String? _phoneNum
+  +dynamic phoneNum
+}
+
+class "swe_homework::classes::website.dart::Website" {
+  -String? _url
+  +dynamic url
+}
+
+class "swe_homework::classes::certifications.dart::Certification" {
+  -String? _certificate
+  +dynamic certificate
+}
+
+class "swe_homework::classes::grade.dart::Grade" {
+  -String? _metric
+  -String? _value
+  +dynamic metric
+  +dynamic value
+}
+
+class "swe_homework::screens::resume_parse.dart::ResumeParseScreen" {
+  +List<Resume> resumes
+  +State<ResumeParseScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::screens::resume_parse.dart::ResumeParseScreen"
+
+class "swe_homework::screens::resume_parse.dart::_ResumeParseScreenState" {
+  -int _selectedIndex
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::screens::resume_parse.dart::_ResumeParseScreenState"
+
+class "swe_homework::widgets::custom_listview.dart::CustomListView" {
+  +Experience info
+  +State<CustomListView> createState()
+}
+
+"swe_homework::widgets::custom_listview.dart::CustomListView" o-- "swe_homework::classes::experience.dart::Experience"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::widgets::custom_listview.dart::CustomListView"
+
+class "swe_homework::widgets::custom_listview.dart::_CustomListViewState" {
+  {static} +int selectedIndex
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::widgets::custom_listview.dart::_CustomListViewState"
+
+class "swe_homework::widgets::container_label.dart::ContainerLabel" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::container_label.dart::ContainerLabel"
+
+class "swe_homework::widgets::custom_name_list.dart::CustomListTile" {
+  +Widget info
+  +State<CustomListTile> createState()
+}
+
+"swe_homework::widgets::custom_name_list.dart::CustomListTile" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::widgets::custom_name_list.dart::CustomListTile"
+
+class "swe_homework::widgets::custom_name_list.dart::_CustomListTileState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::widgets::custom_name_list.dart::_CustomListTileState"
+
+class "swe_homework::widgets::custom_container.dart::CustomContainer" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_container.dart::CustomContainer"
+
+class "swe_homework::widgets::info_container.dart::InfoContainer" {
+  +Widget info
+  +Widget build()
+}
+
+"swe_homework::widgets::info_container.dart::InfoContainer" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::info_container.dart::InfoContainer"
+
+
+@enduml

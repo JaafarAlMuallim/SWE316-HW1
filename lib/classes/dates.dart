@@ -22,8 +22,8 @@ class Date {
   factory Date.fromJson(dynamic json, int index) {
     dynamic data = json['Value']['Data']['WorkExperience'][index]['Dates'];
     return Date(
-      start: data['StartDate'] ?? 'Not Specified',
-      finsih: data['EndDate'] ?? 'Not Specified',
+      start: data['StartDate'] ?? 'XXXX',
+      finsih: data['EndDate'] ?? 'XXXX',
       occupation: data['MonthsInPosition'] ?? 0,
     );
   }
