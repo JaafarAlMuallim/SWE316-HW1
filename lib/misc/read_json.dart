@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:swe_homework/classes/resume.dart';
 
 class Reader {
-  final List<Resume> _resumes = [];
+  static final List<Resume> _resumes = [];
 
   get resumes => _resumes;
   Future<List<Resume>> read() async {
