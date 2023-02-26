@@ -1,4 +1,4 @@
-@startuml ClassDiagram
+@startuml classDiagram
 set namespaceSeparator ::
 
 class "swe_homework::misc::read_json.dart::Reader" {
@@ -30,12 +30,12 @@ class "swe_homework::classes::skill.dart::Skill" {
 class "swe_homework::classes::resume.dart::Resume" {
   -Candidate? _candidate
   -Experience? _experience
-  -List<Education>? _edu
+  -List<Education>? _education
   -List<Skill>? _skills
   -List<Certification>? _certifs
   +dynamic candidate
   +dynamic experience
-  +dynamic edu
+  +dynamic education
   +dynamic skills
   +dynamic certifs
 }
@@ -147,46 +147,19 @@ class "swe_homework::screens::resume_parse.dart::_ResumeParseScreenState" {
 
 "flutter::src::widgets::framework.dart::State" <|-- "swe_homework::screens::resume_parse.dart::_ResumeParseScreenState"
 
-class "swe_homework::widgets::custom_listview.dart::CustomListView" {
-  +Experience info
-  +State<CustomListView> createState()
-}
-
-"swe_homework::widgets::custom_listview.dart::CustomListView" o-- "swe_homework::classes::experience.dart::Experience"
-"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::widgets::custom_listview.dart::CustomListView"
-
-class "swe_homework::widgets::custom_listview.dart::_CustomListViewState" {
-  {static} +int selectedIndex
+class "swe_homework::widgets::custom_skills_listview.dart::CustomSkillListview" {
+  +int selected
   +Widget build()
 }
 
-"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::widgets::custom_listview.dart::_CustomListViewState"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_skills_listview.dart::CustomSkillListview"
 
-class "swe_homework::widgets::container_label.dart::ContainerLabel" {
+class "swe_homework::widgets::custom_certifs_listview.dart::CustomCertifsListview" {
+  +int selected
   +Widget build()
 }
 
-"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::container_label.dart::ContainerLabel"
-
-class "swe_homework::widgets::custom_name_list.dart::CustomListTile" {
-  +Widget info
-  +State<CustomListTile> createState()
-}
-
-"swe_homework::widgets::custom_name_list.dart::CustomListTile" o-- "flutter::src::widgets::framework.dart::Widget"
-"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::widgets::custom_name_list.dart::CustomListTile"
-
-class "swe_homework::widgets::custom_name_list.dart::_CustomListTileState" {
-  +Widget build()
-}
-
-"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::widgets::custom_name_list.dart::_CustomListTileState"
-
-class "swe_homework::widgets::custom_container.dart::CustomContainer" {
-  +Widget build()
-}
-
-"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_container.dart::CustomContainer"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_certifs_listview.dart::CustomCertifsListview"
 
 class "swe_homework::widgets::info_container.dart::InfoContainer" {
   +Widget info
@@ -195,6 +168,34 @@ class "swe_homework::widgets::info_container.dart::InfoContainer" {
 
 "swe_homework::widgets::info_container.dart::InfoContainer" o-- "flutter::src::widgets::framework.dart::Widget"
 "flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::info_container.dart::InfoContainer"
+
+class "swe_homework::widgets::custom_list_tile.dart::CustomListTile" {
+  +Widget info
+  +State<CustomListTile> createState()
+}
+
+"swe_homework::widgets::custom_list_tile.dart::CustomListTile" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "swe_homework::widgets::custom_list_tile.dart::CustomListTile"
+
+class "swe_homework::widgets::custom_list_tile.dart::_CustomListTileState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "swe_homework::widgets::custom_list_tile.dart::_CustomListTileState"
+
+class "swe_homework::widgets::custom_exp_listview.dart::CustomExperienceListview" {
+  +int selected
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_exp_listview.dart::CustomExperienceListview"
+
+class "swe_homework::widgets::custom_edu_listview.dart::CustomEducationListview" {
+  +int selected
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "swe_homework::widgets::custom_edu_listview.dart::CustomEducationListview"
 
 
 @enduml

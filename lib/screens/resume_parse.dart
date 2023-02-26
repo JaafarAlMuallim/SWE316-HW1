@@ -4,8 +4,10 @@ import 'package:swe_homework/constants.dart';
 import 'package:swe_homework/misc/read_json.dart';
 import 'package:swe_homework/widgets/custom_certifs_listview.dart';
 import 'package:swe_homework/widgets/custom_edu_listview.dart';
+import 'package:swe_homework/widgets/custom_emails_listview.dart';
 import 'package:swe_homework/widgets/custom_exp_listview.dart';
-import 'package:swe_homework/widgets/custom_name_list.dart';
+import 'package:swe_homework/widgets/custom_list_tile.dart';
+import 'package:swe_homework/widgets/custom_phones_listview.dart';
 import 'package:swe_homework/widgets/custom_skills_listview.dart';
 
 class ResumeParseScreen extends StatefulWidget {
@@ -48,7 +50,7 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                         height: 400,
                         width: 300,
                         child: ListView.separated(
-                          itemCount: Reader.resumes.length,
+                          itemCount: Reader().resumes.length,
                           itemBuilder: (context, index) {
                             return SizedBox(
                               width: 60,
@@ -56,7 +58,7 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                                 info: ListTile(
                                     hoverColor: Colors.blue[200],
                                     title: Text(
-                                      Reader.resumes[index].candidate.name,
+                                      Reader().resumes[index].candidate.name,
                                       style: kTextStyle.copyWith(
                                           color: Colors.black, fontSize: 14),
                                     ),
@@ -140,6 +142,37 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                         height: 20,
                       ),
                       CustomCertifsListview(selected: _selectedIndex),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        'Email(s)',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomEmailListview(selected: _selectedIndex),
+                      Text(
+                        'Phone Number(s)',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomPhoneListview(selected: _selectedIndex),
                       const SizedBox(
                         width: 40,
                       ),

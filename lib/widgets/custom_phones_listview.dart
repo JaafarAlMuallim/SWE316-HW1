@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:swe_homework/classes/skill.dart';
+import 'package:swe_homework/classes/phone_number.dart';
 import 'package:swe_homework/constants.dart';
 import 'package:swe_homework/misc/read_json.dart';
 import 'package:swe_homework/widgets/info_container.dart';
 
-class CustomSkillListview extends StatelessWidget {
-  const CustomSkillListview({super.key, required this.selected});
+class CustomPhoneListview extends StatelessWidget {
+  const CustomPhoneListview({super.key, required this.selected});
   final int selected;
 
   @override
@@ -15,14 +15,14 @@ class CustomSkillListview extends StatelessWidget {
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Skill skill = Reader().resumes[selected].skills[index];
-            String text = '${skill.name}';
+            PhoneNumber num =
+                Reader().resumes[selected].candidate.phoneNums[index];
             return SizedBox(
               width: 60,
               child: InfoContainer(
                   info: Center(
                 child: Text(
-                  text,
+                  num.phoneNum,
                   style: kTextStyle.copyWith(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
@@ -32,7 +32,7 @@ class CustomSkillListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader().resumes[selected].skills.length),
+          itemCount: Reader().resumes[selected].candidate.phoneNums.length),
     );
   }
 }

@@ -15,7 +15,7 @@ class CustomExperienceListview extends StatelessWidget {
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Job job = Reader.resumes[selected].experience.jobs[index];
+            Job job = Reader().resumes[selected].experience.jobs[index];
             String text =
                 'From ${job.date.start.split('-')[0]} - Until  ${job.date.end.split('-')[0]}';
             return SizedBox(
@@ -39,7 +39,7 @@ class CustomExperienceListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader.resumes[selected].experience.jobs.length),
+          itemCount: Reader().resumes[selected].experience.jobs.length),
     );
   }
 }

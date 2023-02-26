@@ -15,7 +15,7 @@ class CustomCertifsListview extends StatelessWidget {
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Certification certifs = Reader.resumes[selected].certifs[index];
+            Certification certifs = Reader().resumes[selected].certifs[index];
             String text = '${certifs.certificate}';
             return SizedBox(
               width: 60,
@@ -28,7 +28,7 @@ class CustomCertifsListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader.resumes[selected].certifs.length),
+          itemCount: Reader().resumes[selected].certifs.length),
     );
   }
 }

@@ -15,7 +15,7 @@ class CustomEducationListview extends StatelessWidget {
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Education edu = Reader.resumes[selected].education[index];
+            Education edu = Reader().resumes[selected].education[index];
             return SizedBox(
               width: 60,
               child: InfoContainer(
@@ -41,7 +41,7 @@ class CustomEducationListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader.resumes[selected].education.length),
+          itemCount: Reader().resumes[selected].education.length),
     );
   }
 }

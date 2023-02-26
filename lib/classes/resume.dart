@@ -3,6 +3,7 @@ import 'package:swe_homework/classes/certifications.dart';
 import 'package:swe_homework/classes/education.dart';
 import 'package:swe_homework/classes/experience.dart';
 import 'package:swe_homework/classes/skill.dart';
+import 'package:swe_homework/classes/website.dart';
 
 class Resume {
   Candidate? _candidate;
@@ -10,6 +11,7 @@ class Resume {
   List<Education>? _education;
   List<Skill>? _skills;
   List<Certification>? _certifs;
+  List<Website>? _websites;
 
   get candidate => _candidate;
 
@@ -31,17 +33,23 @@ class Resume {
 
   set certifs(value) => _certifs = value;
 
+  get websites => _websites;
+
+  set websites(value) => _websites = value;
+
   Resume(
       {required Candidate candidate,
       required Experience experience,
       required List<Education> education,
       required List<Skill> skill,
-      required List<Certification> certifs})
+      required List<Certification> certifs,
+      required List<Website> webs})
       : _candidate = candidate,
         _experience = experience,
         _education = education,
         _skills = skill,
-        _certifs = certifs;
+        _certifs = certifs,
+        _websites = webs;
 
   factory Resume.fromJson(dynamic json) {
     dynamic data = json['Value']['Data'];
@@ -69,11 +77,19 @@ class Resume {
         edu.add(Education.fromJson(json, i));
       }
     }
+    List<dynamic> webs = data['Websites'];
+    List<Website> websites = [];
+    if (webs.isNotEmpty) {
+      for (int i = 0; i < webs.length; i++) {
+        websites.add(Website.fromJson(json, i));
+      }
+    }
     return Resume(
         candidate: candidate,
         experience: exp,
         education: edu,
         skill: skillList,
-        certifs: certifs);
+        certifs: certifs,
+        webs: websites);
   }
 }

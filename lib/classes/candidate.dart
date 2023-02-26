@@ -12,9 +12,9 @@ class Candidate {
 
   set name(value) => _name = value;
 
-  get phoneNum => _phoneNums;
+  get phoneNums => _phoneNums;
 
-  set phoneNum(value) => _phoneNums = value;
+  set phoneNums(value) => _phoneNums = value;
 
   get emails => _emails;
 
@@ -47,12 +47,16 @@ class Candidate {
       for (int i = 0; i < data['Emails'].length; i++) {
         emails.add(Email.fromJson(json, i));
       }
+    } else {
+      emails.add(Email(email: 'No email given'));
     }
     List<dynamic> phones = data['PhoneNumbers'];
     if (phones.isNotEmpty) {
       for (int i = 0; i < phones.length; i++) {
         phoneNums.add(PhoneNumber.fromJson(json, i));
       }
+    } else {
+      phoneNums.add(PhoneNumber(phoneNum: 'No phone number given'));
     }
     return Candidate(
       name: data['Name']['Raw'] ?? 'Not Sepcified',

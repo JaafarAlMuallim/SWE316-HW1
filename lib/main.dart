@@ -5,7 +5,7 @@ import 'package:swe_homework/myapp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  List<Resume> resumes = await Reader.read();
+  List<Resume> resumes = await Reader().read();
   runApp(MyApp(
     resumes: resumes,
   ));
