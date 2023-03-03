@@ -4,6 +4,8 @@ import 'package:swe_homework/classes/location.dart';
 class Education {
   String? _org;
   String? _eduLevel;
+  // TODO SETTERS AND GETTERS AND CLASS DIAGRAM
+  String? _eduCertificate;
   // String? _certificate;
   Grade? _grade;
   Location? _location;

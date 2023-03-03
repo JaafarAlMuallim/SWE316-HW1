@@ -2,7 +2,7 @@ class Certification {
   String? _certificate;
   get certificate => _certificate;
 
-  set certificate(value) => _certificate = value;
+  // set certificate(value) => _certificate = value;
 
   Certification({required String certificate}) : _certificate = certificate;
 

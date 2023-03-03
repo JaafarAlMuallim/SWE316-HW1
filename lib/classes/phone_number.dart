@@ -2,7 +2,7 @@ class PhoneNumber {
   String? _phoneNum;
   get phoneNum => _phoneNum;
 
-  set phoneNum(value) => _phoneNum = value;
+  // set phoneNum(value) => _phoneNum = value;
 
   PhoneNumber({required String phoneNum}) {
     _phoneNum = phoneNum;

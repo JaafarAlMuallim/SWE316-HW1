@@ -2,7 +2,7 @@ class Website {
   String? _url;
   get url => _url;
 
-  set url(value) => _url = value;
+  // set url(value) => _url = value;
 
   Website({required String url}) {
     url = url;

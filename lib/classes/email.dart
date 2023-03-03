@@ -1,7 +1,7 @@
 class Email {
   String? _email;
   get email => _email;
-  set email(value) => _email = value;
+  // set email(value) => _email = value;
 
   Email({required String email}) {
     _email = email;

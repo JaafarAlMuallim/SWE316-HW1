@@ -4,11 +4,11 @@ class Grade {
 
   get metric => _metric;
 
-  set metric(value) => _metric = value;
+  // set metric(value) => _metric = value;
 
   get value => _value;
 
-  set value(value) => _value = value;
+  // set value(value) => _value = value;
 
   Grade({required String metric, required String value})
       : _metric = metric,

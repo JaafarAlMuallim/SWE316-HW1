@@ -10,46 +10,67 @@ class Resume {
   Experience? _experience;
   List<Education>? _education;
   List<Skill>? _skills;
-  List<Certification>? _certifs;
+  List<Certification>? _certifications;
   List<Website>? _websites;
+  String? _headshotUrl;
+  String? _summary;
+  String? _objective;
 
   get candidate => _candidate;
 
-  set candidate(value) => _candidate = value;
+  // set candidate(value) => _candidate = value;
 
   get experience => _experience;
 
-  set experience(value) => _experience = value;
+  // set experience(value) => _experience = value;
 
   get education => _education;
 
-  set education(value) => _education = value;
+  // set education(value) => _education = value;
 
   get skills => _skills;
 
-  set skills(value) => _skills = value;
+  // set skills(value) => _skills = value;
 
-  get certifs => _certifs;
+  get certifications => _certifications;
 
-  set certifs(value) => _certifs = value;
+  // set certifications(value) => _certifs = value;
 
   get websites => _websites;
 
-  set websites(value) => _websites = value;
+  // set websites(value) => _websites = value;
 
-  Resume(
-      {required Candidate candidate,
-      required Experience experience,
-      required List<Education> education,
-      required List<Skill> skill,
-      required List<Certification> certifs,
-      required List<Website> webs})
-      : _candidate = candidate,
+  get headshotUrl => _headshotUrl;
+
+  // set headshotUrl(value) => _headshotUrl = value;
+
+  get summary => _summary;
+
+//  set summary( value) => _summary = value;
+
+  get objective => _objective;
+
+//  set objective( value) => _objective = value;
+
+  Resume({
+    required Candidate candidate,
+    required Experience experience,
+    required List<Education> education,
+    required List<Skill> skill,
+    required List<Certification> certifications,
+    required List<Website> webs,
+    String? headShotUrl,
+    String? summary,
+    String? objective,
+  })  : _candidate = candidate,
         _experience = experience,
         _education = education,
         _skills = skill,
-        _certifs = certifs,
-        _websites = webs;
+        _certifications = certifications,
+        _websites = webs,
+        _headshotUrl = headShotUrl,
+        _summary = summary,
+        _objective = objective;
 
   factory Resume.fromJson(dynamic json) {
     dynamic data = json['Value']['Data'];
@@ -89,7 +110,10 @@ class Resume {
         experience: exp,
         education: edu,
         skill: skillList,
-        certifs: certifs,
-        webs: websites);
+        certifications: certifs,
+        webs: websites,
+        headShotUrl: data['HeadShot'] ?? 'None Given',
+        summary: data['Summary'] ?? 'None Given',
+        objective: data['Objective'] ?? 'None Given');
   }
 }

@@ -15,15 +15,15 @@ class Experience {
 
   get expYears => _expYears;
 
-  set expYears(value) => _expYears = value;
+  // set expYears(value) => _expYears = value;
 
   get profession => _profession;
 
-  set profession(value) => _profession = value;
+  // set profession(value) => _profession = value;
 
   get jobs => _jobs;
 
-  set jobs(value) => _jobs = value;
+  // set jobs(value) => _jobs = value;
 
   factory Experience.fromJson(dynamic json) {
     dynamic data = json['Value']['Data'];

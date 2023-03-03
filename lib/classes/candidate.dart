@@ -1,8 +1,9 @@
 import 'package:swe_homework/classes/email.dart';
+import 'package:swe_homework/classes/name.dart';
 import 'package:swe_homework/classes/phone_number.dart';
 
 class Candidate {
-  String? _name;
+  Name _name;
   List<PhoneNumber>? _phoneNums;
   List<Email>? _emails;
   String? _bdate;
@@ -10,26 +11,26 @@ class Candidate {
 
   get name => _name;
 
-  set name(value) => _name = value;
+  // set name(value) => _name = value;
 
   get phoneNums => _phoneNums;
 
-  set phoneNums(value) => _phoneNums = value;
+  // set phoneNums(value) => _phoneNums = value;
 
   get emails => _emails;
 
-  set emails(value) => _emails = value;
+  // set emails(value) => _emails = value;
 
   get bdate => _bdate;
 
-  set bdate(value) => _bdate = value;
+  // set bdate(value) => _bdate = value;
 
   get langs => _langs;
 
-  set langs(value) => _langs = value;
+  // set langs(value) => _langs = value;
 
   Candidate({
-    required String name,
+    required Name name,
     required String bdate,
     required List<Email> emails,
     required List<PhoneNumber> phoneNums,
@@ -59,7 +60,7 @@ class Candidate {
       phoneNums.add(PhoneNumber(phoneNum: 'No phone number given'));
     }
     return Candidate(
-      name: data['Name']['Raw'] ?? 'Not Sepcified',
+      name: Name.fromJson(json),
       bdate: data['DateOfBirth'] ?? 'Not Sepcified',
       emails: emails,
       phoneNums: phoneNums,

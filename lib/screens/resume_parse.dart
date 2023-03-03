@@ -58,7 +58,7 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                                 info: ListTile(
                                     hoverColor: Colors.blue[200],
                                     title: Text(
-                                      Reader().resumes[index].candidate.name,
+                                      '${widget.resumes[index].candidate.name.first} ${widget.resumes[index].candidate.name.last}',
                                       style: kTextStyle.copyWith(
                                           color: Colors.black, fontSize: 14),
                                     ),
