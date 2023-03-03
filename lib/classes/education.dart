@@ -4,42 +4,40 @@ import 'package:swe_homework/classes/location.dart';
 class Education {
   String? _org;
   String? _eduLevel;
-  // TODO SETTERS AND GETTERS AND CLASS DIAGRAM
   String? _eduCertificate;
-  // String? _certificate;
   Grade? _grade;
   Location? _location;
 
   get org => _org;
 
-  set org(value) => _org = value;
+  // set org(value) => _org = value;
 
   get eduLevel => _eduLevel;
 
-  set eduLevel(value) => _eduLevel = value;
+  // set eduLevel(value) => _eduLevel = value;
 
-  // get certificate => _certificate;
+  get eduCertificate => _eduCertificate;
 
-  // set certificate(value) => _certificate = value;
+  // set eduCertificate(value) => _eduCertificate = value;
 
   get grade => _grade;
 
-  set grade(value) => _grade = value;
+  // set grade(value) => _grade = value;
 
   get location => _location;
 
-  set location(value) => _location = value;
+  // set location(value) => _location = value;
 
   Education({
     required String org,
     required String eduLevel,
-    // required String certificate,
+    required String certificate,
     required Grade grade,
     required Location location,
   }) {
     _org = org;
     _eduLevel = eduLevel;
-    // _certificate = certificate;
+    _eduCertificate = certificate;
     _grade = grade;
     _location = location;
   }
@@ -48,7 +46,7 @@ class Education {
     return Education(
       org: data['Organization'] ?? 'Not Sepcified',
       eduLevel: data['Accreditation']['EducationLevel'] ?? 'Not Sepcified',
-      // certificate: data['Accreditation']['Education'] ?? 'Not Sepcified',
+      certificate: data['Accreditation']['Education'] ?? 'Not Sepcified',
       location: Location.fromJson(json, where: 'Education'),
       grade: Grade.fromJson(json, index),
     );
