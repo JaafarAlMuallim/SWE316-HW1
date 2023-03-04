@@ -4,23 +4,24 @@ class Location {
   String? _city;
   String? _state;
   String? _formatted;
-  get country => _country;
+
+  String? get country => _country;
 
   // set country(value) => _country = value;
 
-  get postalCode => _postalCode;
+  String? get postalCode => _postalCode;
 
   // set postalCode(value) => _postalCode = value;
 
-  get city => _city;
+  String? get city => _city;
 
   // set city(value) => _city = value;
 
-  get state => _state;
+  String? get state => _state;
 
 //  set state(String? value) => this._state = value;
 
-  get formatted => _formatted;
+  String? get formatted => _formatted;
 
 //  set formatted( value) => this._formatted = value;
 
@@ -36,16 +37,21 @@ class Location {
     _state = state;
     _formatted = formatted;
   }
-  factory Location.fromJson(dynamic json,
-      {required String where, int index = 0}) {
-    dynamic data = json['Value']['Data'][where][index]['Location'];
+  factory Location.fromJson(Map<String, dynamic> json,
+      {String? where, int index = 0}) {
+    dynamic data;
+    if (where != null) {
+      data = json['Value']['Data'][where][index]['Location'];
+    } else {
+      data = json['Value']['Data']['Location'] as dynamic;
+    }
     Location location = data == null
         ? Location(
-            city: 'XXXX',
-            code: 'XXXX',
-            country: 'XXXX',
-            state: 'XXXX',
-            formatted: 'XXXX')
+            city: 'Not Specified',
+            code: 'Not Specified',
+            country: 'Not Specified',
+            state: 'Not Specified',
+            formatted: 'Not Specified')
         : Location(
             country: data['Country'] ?? 'XXXX',
             code: data['PostalCode'] ?? 'XXXX',

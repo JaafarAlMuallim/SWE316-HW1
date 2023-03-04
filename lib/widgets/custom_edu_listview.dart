@@ -11,11 +11,11 @@ class CustomEducationListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 150,
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Education edu = Reader().resumes[selected].education[index];
+            Education edu = Reader().resumes[selected].education![index];
             return SizedBox(
               width: 60,
               child: InfoContainer(
@@ -23,13 +23,18 @@ class CustomEducationListview extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Center(
+                      child: Text(edu.certificateTitle!,
+                          style: kTextStyle.copyWith(fontSize: 12),
+                          textAlign: TextAlign.center),
+                    ),
+                    Center(
                       child: Text('${edu.org}',
-                          style: kTextStyle.copyWith(fontSize: 14),
+                          style: kTextStyle.copyWith(fontSize: 10),
                           textAlign: TextAlign.center),
                     ),
                     Center(
                       child: Text(
-                          'Grade: ${edu.grade.value} ${edu.grade.metric}',
+                          'Grade: ${edu.grade!.value} ${edu.grade!.metric}',
                           style: kTextStyle.copyWith(fontSize: 14),
                           textAlign: TextAlign.center),
                     )
@@ -41,7 +46,7 @@ class CustomEducationListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader().resumes[selected].education.length),
+          itemCount: Reader().resumes[selected].education!.length),
     );
   }
 }

@@ -4,27 +4,27 @@ import 'package:swe_homework/classes/location.dart';
 class Education {
   String? _org;
   String? _eduLevel;
-  String? _eduCertificate;
+  String? _certificateTitle;
   Grade? _grade;
   Location? _location;
 
-  get org => _org;
+  String? get org => _org;
 
   // set org(value) => _org = value;
 
-  get eduLevel => _eduLevel;
+  String? get eduLevel => _eduLevel;
 
   // set eduLevel(value) => _eduLevel = value;
 
-  get eduCertificate => _eduCertificate;
+  String? get certificateTitle => _certificateTitle;
 
-  // set eduCertificate(value) => _eduCertificate = value;
+  // set certificateTitle(value) => _certificateTitle = value;
 
-  get grade => _grade;
+  Grade? get grade => _grade;
 
   // set grade(value) => _grade = value;
 
-  get location => _location;
+  Location? get location => _location;
 
   // set location(value) => _location = value;
 
@@ -37,12 +37,12 @@ class Education {
   }) {
     _org = org;
     _eduLevel = eduLevel;
-    _eduCertificate = certificate;
+    _certificateTitle = certificate;
     _grade = grade;
     _location = location;
   }
-  factory Education.fromJson(dynamic json, index) {
-    dynamic data = json['Value']['Data']['Education'][index];
+  factory Education.fromJson(Map<String, dynamic> json, index) {
+    Map<String, dynamic> data = json['Value']['Data']['Education'][index];
     return Education(
       org: data['Organization'] ?? 'Not Sepcified',
       eduLevel: data['Accreditation']['EducationLevel'] ?? 'Not Sepcified',

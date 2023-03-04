@@ -12,17 +12,17 @@ class CustomEmailListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 150,
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
-            Email mail = Reader().resumes[selected].candidate.emails[index];
+            Email mail = Reader().resumes[selected].candidate!.emails![index];
             return SizedBox(
               width: 60,
               child: InfoContainer(
                   info: Center(
                 child: Text(
-                  mail.email,
+                  mail.email!,
                   style: kTextStyle.copyWith(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
@@ -32,7 +32,7 @@ class CustomEmailListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader().resumes[selected].candidate.emails.length),
+          itemCount: Reader().resumes[selected].candidate!.emails!.length),
     );
   }
 }

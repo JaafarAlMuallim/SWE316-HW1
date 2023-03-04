@@ -1,37 +1,44 @@
 class Skill {
   String? _name;
-  final String? _type;
+  String? _type;
   List<String>? _section;
-  String? _numMonths;
+  int? _numMonths;
   String? _lastUsed;
 
-  get name => _name;
+  String? get name => _name;
 
   // set name(value) => _name = value;
 
-  get type => _type;
+  String? get type => _type;
 
   // set type(value) => type = value;
 
-  get section => _section;
+  List<String>? get section => _section;
 
   // set section(value) => _section = value;
 
-  get numMonths => _numMonths;
+  int? get numMonths => _numMonths;
 
 //  set numMonths( value) => this._numMonths = value;
 
-  get lastUsed => _lastUsed;
+  String? get lastUsed => _lastUsed;
 
 //  set lastUsed( value) => this._lastUsed = value;
 
-  Skill({required String name, String? type, List<String>? section})
+  Skill(
+      {required String name,
+      required String? type,
+      required List<String>? section,
+      required int numMonths,
+      required String lastUsed})
       : _name = name,
         _type = type,
-        _section = section;
+        _section = section,
+        _numMonths = numMonths,
+        _lastUsed = lastUsed;
 
-  factory Skill.fromJson(dynamic json, int index) {
-    dynamic data = json['Value']['Data']['Skills'];
+  factory Skill.fromJson(Map<String, dynamic> json, int index) {
+    List<dynamic> data = json['Value']['Data']['Skills'];
     List<dynamic> jsonSrc = data[index]['Sources'];
     List<String> sources = [];
     if (jsonSrc.isNotEmpty) {
@@ -42,9 +49,10 @@ class Skill {
       sources.add('None Given');
     }
     return Skill(
-      name: data[index]['Name'] ?? 'Not Sepcified',
-      type: data[index]['Type'] ?? 'Not Sepcified',
-      section: sources,
-    );
+        name: data[index]['Name'] ?? 'Not Sepcified',
+        type: data[index]['Type'] ?? 'Not Sepcified',
+        section: sources,
+        numMonths: data[index]['NumberOfMonths'] ?? 0,
+        lastUsed: data[index]['LastUsed'] ?? 'Not Specified');
   }
 }

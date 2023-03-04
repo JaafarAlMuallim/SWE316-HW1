@@ -6,9 +6,14 @@ import 'package:swe_homework/widgets/custom_certifs_listview.dart';
 import 'package:swe_homework/widgets/custom_edu_listview.dart';
 import 'package:swe_homework/widgets/custom_emails_listview.dart';
 import 'package:swe_homework/widgets/custom_exp_listview.dart';
+import 'package:swe_homework/widgets/custom_info_listview.dart';
+import 'package:swe_homework/widgets/custom_langs_listview.dart';
 import 'package:swe_homework/widgets/custom_list_tile.dart';
+import 'package:swe_homework/widgets/custom_location_listview.dart';
 import 'package:swe_homework/widgets/custom_phones_listview.dart';
 import 'package:swe_homework/widgets/custom_skills_listview.dart';
+import 'package:swe_homework/widgets/custom_webs_listview.dart';
+import 'package:swe_homework/widgets/custom_job_listview.dart';
 
 class ResumeParseScreen extends StatefulWidget {
   const ResumeParseScreen({super.key, required this.resumes});
@@ -58,7 +63,7 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                                 info: ListTile(
                                     hoverColor: Colors.blue[200],
                                     title: Text(
-                                      '${widget.resumes[index].candidate.name.first} ${widget.resumes[index].candidate.name.last}',
+                                      '${widget.resumes[index].candidate!.name!.first!} ${widget.resumes[index].candidate!.name!.last!}',
                                       style: kTextStyle.copyWith(
                                           color: Colors.black, fontSize: 14),
                                     ),
@@ -82,7 +87,7 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                     ],
                   ),
                   const SizedBox(
-                    width: 20,
+                    width: 40,
                   ),
                   const VerticalDivider(
                     width: 4,
@@ -97,14 +102,58 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                         height: 40,
                       ),
                       Text(
-                        'Experience',
+                        'Headshot',
                         style: kTextStyle.copyWith(
                             color: Colors.white, fontSize: 16),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomExperienceListview(selected: _selectedIndex),
+                      Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black45, width: 4),
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image:
+                                  widget.resumes[_selectedIndex].headshotUrl !=
+                                          'None Given'
+                                      ? NetworkImage(widget
+                                          .resumes[_selectedIndex].headshotUrl!)
+                                      : const AssetImage(
+                                          'assets/images/person.jpg',
+                                        ) as ImageProvider,
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Location',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomLocationListview(selected: _selectedIndex),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Educations',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomEducationListview(selected: _selectedIndex),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Text(
                         'Skills',
                         style: kTextStyle.copyWith(
@@ -124,15 +173,46 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                       const SizedBox(
                         height: 40,
                       ),
+                      Text('General Info',
+                          style: kTextStyle.copyWith(
+                              color: Colors.white, fontSize: 16)),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomInfoListview(selected: _selectedIndex),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Text(
-                        'Education',
+                        'Email(s)',
                         style: kTextStyle.copyWith(
                             color: Colors.white, fontSize: 16),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomEducationListview(selected: _selectedIndex),
+                      CustomEmailListview(selected: _selectedIndex),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Experience',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomExpListview(selected: _selectedIndex),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Text(
                         'Certifications',
                         style: kTextStyle.copyWith(
@@ -156,15 +236,6 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                         height: 40,
                       ),
                       Text(
-                        'Email(s)',
-                        style: kTextStyle.copyWith(
-                            color: Colors.white, fontSize: 16),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomEmailListview(selected: _selectedIndex),
-                      Text(
                         'Phone Number(s)',
                         style: kTextStyle.copyWith(
                             color: Colors.white, fontSize: 16),
@@ -174,8 +245,47 @@ class _ResumeParseScreenState extends State<ResumeParseScreen> {
                       ),
                       CustomPhoneListview(selected: _selectedIndex),
                       const SizedBox(
-                        width: 40,
+                        height: 20,
                       ),
+                      Text(
+                        'Languages',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomLangsListview(selected: _selectedIndex),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Jobs',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomJobsListview(selected: _selectedIndex),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Websites',
+                        style: kTextStyle.copyWith(
+                            color: Colors.white, fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomWebListview(selected: _selectedIndex),
                     ],
                   ),
                 ],

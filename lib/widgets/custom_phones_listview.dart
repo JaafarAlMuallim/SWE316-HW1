@@ -11,18 +11,18 @@ class CustomPhoneListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 150,
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
             PhoneNumber num =
-                Reader().resumes[selected].candidate.phoneNums[index];
+                Reader().resumes[selected].candidate!.phoneNums![index];
             return SizedBox(
               width: 60,
               child: InfoContainer(
                   info: Center(
                 child: Text(
-                  num.phoneNum,
+                  num.phoneNum!,
                   style: kTextStyle.copyWith(fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
@@ -32,7 +32,7 @@ class CustomPhoneListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader().resumes[selected].candidate.phoneNums.length),
+          itemCount: Reader().resumes[selected].candidate!.phoneNums!.length),
     );
   }
 }

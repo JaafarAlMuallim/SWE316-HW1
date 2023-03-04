@@ -1,13 +1,13 @@
 class Certification {
   String? _certificate;
-  get certificate => _certificate;
+  String? get certificate => _certificate;
 
   // set certificate(value) => _certificate = value;
 
   Certification({required String certificate}) : _certificate = certificate;
 
-  factory Certification.fromJson(dynamic json, int index) {
-    dynamic data = json['Value']['Data'];
+  factory Certification.fromJson(Map<String, dynamic> json, int index) {
+    Map<String, dynamic> data = json['Value']['Data'];
     return Certification(certificate: data['Certifications'][index]);
   }
 }

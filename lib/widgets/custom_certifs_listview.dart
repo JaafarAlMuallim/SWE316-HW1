@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swe_homework/classes/certifications.dart';
+import 'package:swe_homework/classes/certification.dart';
 import 'package:swe_homework/constants.dart';
 import 'package:swe_homework/misc/read_json.dart';
 import 'package:swe_homework/widgets/info_container.dart';
@@ -11,12 +11,12 @@ class CustomCertifsListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 150,
       width: 300,
       child: ListView.separated(
           itemBuilder: (context, index) {
             Certification certifs =
-                Reader().resumes[selected].certifications[index];
+                Reader().resumes[selected].certifications![index];
             String text = '${certifs.certificate}';
             return SizedBox(
               width: 60,
@@ -29,7 +29,7 @@ class CustomCertifsListview extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(
                 height: 6,
               ),
-          itemCount: Reader().resumes[selected].certifications.length),
+          itemCount: Reader().resumes[selected].certifications!.length),
     );
   }
 }

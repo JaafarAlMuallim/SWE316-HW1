@@ -2,11 +2,11 @@ class Grade {
   String? _metric;
   String? _value;
 
-  get metric => _metric;
+  String? get metric => _metric;
 
   // set metric(value) => _metric = value;
 
-  get value => _value;
+  String? get value => _value;
 
   // set value(value) => _value = value;
 
@@ -14,10 +14,10 @@ class Grade {
       : _metric = metric,
         _value = value;
 
-  factory Grade.fromJson(dynamic json, int index) {
+  factory Grade.fromJson(Map<String, dynamic> json, int index) {
     dynamic data = json['Value']['Data']['Education'][index]['Grade'];
     Grade grade = data == null
-        ? Grade(metric: 'XXXX', value: 'XXXX')
+        ? Grade(metric: 'XX', value: 'XX')
         : Grade(metric: data['Metric'], value: data['Value']);
     return grade;
   }
