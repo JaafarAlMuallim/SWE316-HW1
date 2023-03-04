@@ -36,6 +36,23 @@ class CustomExpListview extends StatelessWidget {
           ),
           SizedBox(
             width: 60,
+            // CustomListTile(
+            //                     info: ListTile(
+            //                         hoverColor: Colors.blue[200],
+            //                         title: Text(
+            //                           '${widget.resumes[index].candidate!.name!.first!} ${widget.resumes[index].candidate!.name!.last!}',
+            //                           style: kTextStyle.copyWith(
+            //                               color: Colors.black, fontSize: 14),
+            //                         ),
+            //                         tileColor: _selectedIndex == index
+            //                             ? Colors.blue
+            //                             : Colors.white,
+            //                         onTap: () {
+            //                           setState(() {
+            //                             _selectedIndex = index;
+            //                           });
+            //                         }),
+            //                   ),
             child: InfoContainer(
               info: Center(
                 child: Text(
