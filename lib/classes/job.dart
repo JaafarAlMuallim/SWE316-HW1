@@ -52,12 +52,12 @@ class Job {
     List<dynamic> data = json['Value']['Data']['WorkExperience'];
     JobClassification classification = JobClassification.fromJson(json, index);
     return Job(
-      jobTitle: data[index]['JobTitle'] ?? 'Not Sepcified',
+      jobTitle: data[index]['JobTitle'] ?? 'None Given',
       date: Date.fromJson(json, index),
       location: Location.fromJson(json, where: 'WorkExperience', index: index),
       classification: classification,
-      description: data[index]['JobDescription'],
-      org: data[index]['Organization'],
+      description: data[index]['JobDescription'] ?? 'None Given',
+      org: data[index]['Organization'] ?? 'None Given',
     );
   }
 }
