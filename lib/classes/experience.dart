@@ -1,4 +1,3 @@
-import 'package:swe_homework/classes/certification.dart';
 import 'package:swe_homework/classes/date.dart';
 import 'package:swe_homework/classes/job.dart';
 import 'package:swe_homework/classes/job_classification.dart';

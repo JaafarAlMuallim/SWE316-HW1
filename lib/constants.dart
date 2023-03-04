@@ -19,6 +19,8 @@ const kIconColor = Color(0XFFF5F7F9);
 const kBackgroundBlurred = Color(0XFF1C1D22);
 const kResetColor = Color(0XFFDF696A);
 const kResetBackground = Color.fromRGBO(223, 105, 106, 0.3);
+const kUnoveredColor = Color(0XFF0077B6);
+const khoveredColor = Color(0XFF00B4D8);
 const TextStyle kTextStyle = TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.w700,

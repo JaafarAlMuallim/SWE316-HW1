@@ -14,7 +14,7 @@ class Grade {
       : _metric = metric,
         _value = value;
 
-  factory Grade.fromJson(Map<String, dynamic> json, int index) {
+  factory Grade.fromJson(dynamic json, int index) {
     dynamic data = json['Value']['Data']['Education'][index]['Grade'];
     Grade grade = data == null
         ? Grade(metric: 'XX', value: 'XX')
